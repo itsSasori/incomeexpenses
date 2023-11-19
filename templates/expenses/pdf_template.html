@@ -1,0 +1,52 @@
+<!-- pdf_template.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Export</title>
+</head>
+<style>
+    @page{
+        size:"A4";
+        margin:2.5cm 1.5cm 3.5cm 1.5cm;
+        
+        @top-center{
+            content="A pdf page"
+        }
+        @bottom-right{
+            content:'Page ' counter(page) " of " counter(pages);
+        }
+    }
+</style>
+<body>
+    <h1>{{ context_variable }}</h1>
+    <!-- Add your HTML content here -->
+        <table class="table">
+        <thead>
+          <tr>
+            <th>S.N</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          {% for expense in expenses%}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{expense.amount}}</td>
+            <td>{{expense.category}}</td>
+            <td>{{expense.description}}</td>
+            <td>{{expense.date}}</td>
+  
+          </tr>
+          {% endfor %}
+          <td>Total:</td>
+          <td>{{total}}</td>
+        </tbody> 
+        </table>
+      </div>
+</body>
+</html>
